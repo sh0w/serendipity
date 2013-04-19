@@ -1,9 +1,13 @@
 Serendipity::Application.routes.draw do
+  get "user/show"
+
   devise_for :users
 
   root :to => "static_pages#home"
 
   resources :photos
+
+  match 'user/:id' => 'user#show', :as => "user"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,8 @@
+%h1= @user.username
+%p
+  signed up
+  = time_ago_in_words @user.created_at
+  ago
+
+%h2 Photos
+%p= render @user.photos

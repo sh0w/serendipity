@@ -1,0 +1,8 @@
+%p
+  = image_tag photo.url
+%p
+  taken
+  = time_ago_in_words photo.created_at
+  ago by
+  = link_to photo.user.username, user_path(photo.user)
+%p.well= photo.description

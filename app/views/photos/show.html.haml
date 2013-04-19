@@ -1,19 +1,6 @@
 - model_class = Photo
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human
 
-%p
-  %strong= model_class.human_attribute_name(:url) + ':'
-  %br
-  = image_tag @photo.url
-%p
-  %strong= model_class.human_attribute_name(:description) + ':'
-  %br
-  = @photo.description
-%p
-  %strong= model_class.human_attribute_name(:user_id) + ':'
-  %br
-  = @photo.user_id
+= render @photo
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), photos_path, :class => 'btn'
