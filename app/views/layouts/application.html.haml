@@ -41,21 +41,18 @@
                 %li
                   = link_to('Sign up', new_user_registration_path)
 
+                %li= link_to "Upload new photo", new_photo_path
+                %li= link_to "Original Photos", "/photos"
+                %li= link_to "Merged Photos", "/merged"
+
     .container-fluid
 
       .row-fluid
-        .span3
-          .well.sidebar-nav
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Show original photos", "/photos"
-              %li= link_to "Upload new photo", new_photo_path
-              %li= link_to "Link 3", "/path3"
-        .span9
+        .span12
           = yield
     
       %footer
-        %p &copy; Company 2012
+        %p &copy; Serendipity 2013
     /
       Javascripts
       \==================================================
