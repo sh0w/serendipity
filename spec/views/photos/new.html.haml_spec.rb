@@ -5,7 +5,8 @@ describe "photos/new" do
     assign(:photo, stub_model(Photo,
       :url => "MyString",
       :description => "MyText",
-      :user_id => 1
+      :user_id => 1,
+      :created_at => Time.now
     ).as_new_record)
   end
 

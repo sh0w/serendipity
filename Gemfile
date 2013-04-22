@@ -38,6 +38,7 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'rspec-rails'
+gem 'capybara'
 
 gem 'devise'
 gem 'omniauth'
@@ -49,3 +50,4 @@ gem "twitter-bootstrap-rails"
 
 gem 'haml-rails'
 gem 'carrierwave'
+
