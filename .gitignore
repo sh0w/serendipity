@@ -31,3 +31,8 @@ rerun.txt
 pickle-email-*.html
 .idea
 .idea/*
+
+/public/uploads/*
+/config/database.yml
+/config/initializers/devise.rb
+
