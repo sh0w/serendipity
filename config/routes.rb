@@ -1,13 +1,19 @@
 Serendipity::Application.routes.draw do
   get "user/show"
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root :to => "static_pages#home"
 
   resources :photos
 
+  # user profiles
   match 'user/:id' => 'user#show', :as => "user"
+
+  # for sign in with twitter+fb
+  match "/auth/:provider/callback" => "sessions#create"
+  match "/signout" => "sessions#destroy", :as => :signout
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

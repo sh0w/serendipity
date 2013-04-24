@@ -51,3 +51,7 @@ gem "twitter-bootstrap-rails"
 gem 'haml-rails'
 gem 'carrierwave'
 
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+
