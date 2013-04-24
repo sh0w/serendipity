@@ -6,11 +6,7 @@
   .control-group
     = f.label :description, :class => 'control-label'
     .controls
-      = f.text_area :description, :class => 'text_area'
-  .control-group
-    = f.label :user_id, :class => 'control-label'
-    .controls
-      = f.number_field :user_id, :class => 'number_field'
+      = f.text_area :description, :class => 'text_area', :rows => 4
   .form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), photos_path, :class => 'btn'
