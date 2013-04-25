@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+
   # GET /photos
   # GET /photos.json
   def index
@@ -41,6 +43,7 @@ class PhotosController < ApplicationController
   # POST /photos.json
   def create
     @photo = Photo.new(params[:photo])
+    @photo.user_id = current_user.id
 
     respond_to do |format|
       if @photo.save
