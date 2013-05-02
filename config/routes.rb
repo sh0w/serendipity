@@ -6,6 +6,7 @@ Serendipity::Application.routes.draw do
   root :to => "static_pages#home"
 
   resources :photos
+  resources :merges
 
   # user profiles
   match 'user/:id' => 'user#show', :as => "user"

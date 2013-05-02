@@ -35,4 +35,4 @@ pickle-email-*.html
 /public/uploads/*
 /config/database.yml
 /config/initializers/devise.rb
-
+/app/assets/images/*
