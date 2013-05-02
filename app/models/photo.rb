@@ -18,6 +18,8 @@ class Photo < ActiveRecord::Base
     overlay_photo = Photo.last(2).first
     overlay = Magick::Image.read("public/uploads/photo/#{overlay_photo.id}/#{overlay_photo.url.file.filename}").first
     overlay = overlay.resize_to_fill(500, 500)
+
+
     source.composite!(overlay, 0, 0, Magick::OverlayCompositeOp)
 
     m = Merge.create!(
