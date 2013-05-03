@@ -2,8 +2,6 @@ class Photo < ActiveRecord::Base
   attr_accessible :description, :url, :user_id
   belongs_to :user
 
-  include Magick
-
   mount_uploader :url, PhotoUploader
 
   after_commit :new_merged_photo
