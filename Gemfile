@@ -49,4 +49,4 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
 gem 'rmagick'
-gem 'mysql'
+gem 'mysql2'
