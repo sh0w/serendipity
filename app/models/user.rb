@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
 
   has_many :photos, :dependent => :destroy
+  #has_many :merges, :dependent => :destroy
 
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -40,7 +41,6 @@ class User < ActiveRecord::Base
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
 
-    puts "test !??!??!?!?!?!?!?!?!!? debug !!`?!?!?!?!??!??!`"
     require 'pp'
     #puts auth
     pp auth
