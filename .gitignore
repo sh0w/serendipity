@@ -36,6 +36,7 @@ pickle-email-*.html
 
 /public/uploads/*
 /config/database.yml
+*/database.yml
 /config/initializers/devise.rb
 /app/assets/images/*
 db/migrate/20130507205141_add_user_id_to_merges.rb

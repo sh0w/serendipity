@@ -2,14 +2,12 @@ class Photo < ActiveRecord::Base
   attr_accessible :description, :url, :user_id
   belongs_to :user
 
-  include Magick
-
   mount_uploader :url, PhotoUploader
 
   after_commit :new_merged_photo
 
   def new_merged_photo
-    require "rmagick"
+    require "carrierwave/processing/rmagick"
 
     source = Magick::Image.read("public/uploads/photo/#{self.id}/#{self.url.file.filename}").first
     source = source.resize_to_fill(500, 500).contrast(true)

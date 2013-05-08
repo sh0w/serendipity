@@ -1,3 +1,12 @@
 -# @merge.inspect
 
 = render @merge
+<br>
+= image_tag @first_image.url, :width=>100
+by
+= @first_image.user.username
+<br>
+= image_tag @second_image.url, :width=>100
+by
+= @first_image.user.username
+<br>
