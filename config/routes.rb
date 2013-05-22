@@ -8,6 +8,7 @@ Serendipity::Application.routes.draw do
   resources :photos
   resources :merges
 
+
   # user profiles
   match 'user/:id' => 'user#show', :as => "user"
 

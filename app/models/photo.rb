@@ -22,10 +22,14 @@ class Photo < ActiveRecord::Base
 
     source.composite!(overlay, 0, 0, Magick::OverlayCompositeOp)
 
+    logger.debug("USER ID!")
+    logger.debug(self.user_id)
+
     m = Merge.create!(
         :first_image => self.id,
         :second_image => Photo.last(2).first.id,
-        :blend_mode  => "overlay"
+        :blend_mode  => "overlay",
+        #:user_id => self.user_id
     )
 
     url= "app/assets/images/merged/#{m.id}.jpg"
