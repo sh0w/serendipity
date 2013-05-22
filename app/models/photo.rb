@@ -2,6 +2,8 @@ class Photo < ActiveRecord::Base
   attr_accessible :description, :url, :user_id
   belongs_to :user
 
+  has_many :merges, :foreign_key => 'first_image'
+
   mount_uploader :url, PhotoUploader
 
   after_commit :new_merged_photo
