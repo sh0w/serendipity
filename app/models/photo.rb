@@ -29,10 +29,16 @@ class Photo < ActiveRecord::Base
         :blend_mode  => "overlay"
     )
 
-    url= "app/assets/images/merged/#{m.id}.jpg"
-    source.write(url)
+    puts m.inspect
+    puts "---------"
+
+    url= "uploads/merge/#{m.id}.jpg"
+    source.write("public/"+url)
 
     m.url = url
     m.save!
+
+    puts m.inspect
+    puts "---------"
   end
 end
