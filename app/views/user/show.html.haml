@@ -5,4 +5,6 @@
   ago
 
 %h2 Photos
-%p= render @user.photos
+
+-@merges.each do | merge |
+  %p= render merge
