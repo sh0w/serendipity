@@ -4,7 +4,7 @@
   .photo
     %p= link_to image_tag(photo.url), photo_path(photo)
     %p
-      -# time_ago_in_words(photo.created_at) if ! photo.created_at.blank?
+      - time_ago_in_words(photo.created_at)
       ago by
       - if photo.user.username.blank?
         user

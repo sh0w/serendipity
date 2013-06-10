@@ -7,6 +7,6 @@ class MergesController < ApplicationController
   end
 
   def index
-    @merges = Merge.all
+    @merges = Merge.order("created_at DESC").all
   end
 end
