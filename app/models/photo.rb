@@ -28,12 +28,30 @@ class Photo < ActiveRecord::Base
     overlay = Magick::Image.read("public/uploads/photo/#{overlay_photo.id}/#{overlay_photo.url.file.filename}").first
     overlay = overlay.resize_to_fill(500, 500)
 
-    source.composite!(overlay, 0, 0, getMergeFunction)
+    mergeFunctions = ["overlay", "screen", "darken", "lighten", "hardlight"]
+    blendingMethodKey = mergeFunctions.sample
+
+    puts "blendingTest"
+    puts blendingMethodKey
+    
+    case blendingMethodKey
+    when "overlay"
+      source.composite!(overlay, 0, 0, Magick::ScreenCompositeOp)
+    when "screen"
+      source.composite!(overlay, 0, 0, Magick::OverlayCompositeOp)
+    when "darken"
+      source.composite!(overlay, 0, 0, Magick::DarkenCompositeOp)
+    when "lighten"
+      source.composite!(overlay, 0, 0, Magick::LightenCompositeOp)
+    when "hardlight"
+      source.composite!(overlay, 0, 0, Magick::HardLightCompositeOp)
+    end
+
 
     m = Merge.create!(
         :first_image => self.id,
         :second_image => Photo.last(2).first.id,
-        :blend_mode  => "overlay"
+        :blend_mode  => blendingMethodKey
     )
 
     puts m.inspect
@@ -47,12 +65,6 @@ class Photo < ActiveRecord::Base
 
     puts m.inspect
     puts "---------"
-  end
-
-  def getMergeFunction
-    mergeFunctions = Array.new
-    mergeFunctions.push(Magick::OverlayCompositeOp, Magick::ScreenCompositeOp, Magick::MultiplyCompositeOp, Magick::DarkenCompositeOp, Magick::LightenCompositeOp, Magick::HardLightCompositeOp)
-    mergeFunctions.sample
   end
 
 end
