@@ -42,3 +42,4 @@ config/database.yml
 /app/assets/images/*
 db/migrate/20130507205141_add_user_id_to_merges.rb
 db/migrate/20130508134244_remove_user_id_from_merges.rb
+Gemfile.lock

@@ -15,7 +15,9 @@ class Photo < ActiveRecord::Base
 
     source = source.resize_to_fill(500, 500).contrast(true)
 
-    overlay_photo = Photo.last(2).first
+    # if only one photo exists --> photo should be merged with itself
+    overlay_photo = Photo.count < 2 ? self : Photo.last(2).first
+
     overlay = Magick::Image.read("public/uploads/photo/#{overlay_photo.id}/#{overlay_photo.url.file.filename}").first
     overlay = overlay.resize_to_fill(500, 500)
 
