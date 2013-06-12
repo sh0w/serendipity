@@ -10,7 +10,7 @@ class Photo < ActiveRecord::Base
 
   validates :url,
             :file_size => {
-                :maximum => 5.megabytes.to_i
+                :maximum => 8.megabytes.to_i
             }
 
   after_commit :new_merged_photo
