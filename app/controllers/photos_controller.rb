@@ -51,7 +51,7 @@ class PhotosController < ApplicationController
         format.html { redirect_to merge_path(@merge), notice: 'Photo was successfully created.' }
         format.json { render json: @merge, status: :created, location: @merge }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", warning: "nono" }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
       end
     end

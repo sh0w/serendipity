@@ -6,10 +6,10 @@
     %p
       - time_ago_in_words(photo.created_at)
       ago by
-      - if photo.user.username.blank?
+      - if photo.user.blank? or photo.user.username.blank?
         user
       - else
         = link_to photo.user.username, user_path(photo.user)
-    %p= photo.description
+    %p.description= photo.description
 
 = link_to t('.new', :default => t("helpers.links.new")), new_photo_path, :class => 'btn btn-primary'
