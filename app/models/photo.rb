@@ -1,3 +1,4 @@
+require 'file_size_validator'
 class Photo < ActiveRecord::Base
   attr_accessible :description, :url, :user_id
   belongs_to :user
@@ -5,6 +6,12 @@ class Photo < ActiveRecord::Base
   has_many :merges, :foreign_key => 'first_image'
 
   mount_uploader :url, PhotoUploader
+  validates_presence_of :url, :message => "Please select a photo that you would like to merge."
+
+  validates :url,
+            :file_size => {
+                :maximum => 5.megabytes.to_i
+            }
 
   after_commit :new_merged_photo
 
