@@ -17,7 +17,7 @@ describe "photos/new" do
     assert_select "form[action=?][method=?]", photos_path, "post" do
       assert_select "input#photo_url[name=?]", "photo[url]"
       assert_select "textarea#photo_description[name=?]", "photo[description]"
-      assert_select "input#photo_user_id[name=?]", "photo[user_id]"
+      assert_select "input#photo_user_id[name=?]", "photo[user_id]", false, "should not have a user id form element!"
     end
   end
 end

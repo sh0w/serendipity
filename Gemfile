@@ -50,3 +50,5 @@ gem 'omniauth-facebook'
 
 gem 'rmagick'
 gem 'mysql2'
+
+gem "capybara"
