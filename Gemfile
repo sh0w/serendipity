@@ -51,3 +51,6 @@ gem 'omniauth-facebook'
 gem 'rmagick'
 
 gem 'mysql2'
+
+gem 'kaminari'
+gem 'acts_as_votable', '~> 0.5.0'

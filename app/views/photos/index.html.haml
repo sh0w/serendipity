@@ -1,5 +1,7 @@
 - model_class = Photo
 
+= paginate @photos
+
 - @photos.each do |photo|
   .photo
     %p= link_to image_tag(photo.url), photo_path(photo)

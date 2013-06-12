@@ -1,12 +1,25 @@
 class MergesController < ApplicationController
 
-  def show
+  before_filter :find_merge, :except => :index
+  before_filter :authenticate_user!, :only => [:like]
+
+  def find_merge
     @merge = Merge.find(params[:id])
+  end
+
+  def show
     @first_image = Photo.find(@merge.first_image)
     @second_image = Photo.find(@merge.second_image)
   end
 
+  def like
+    @merge.liked_by current_user
+    redirect_to @merge
+    flash[:notice]="Liked!"
+  end
+
   def index
-    @merges = Merge.order("created_at DESC").all
+    params[:order] ||= "created_at"
+    @merges = Merge.order("#{params[:order]} DESC").page(params[:page]).per(9)
   end
 end

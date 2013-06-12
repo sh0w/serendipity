@@ -16,6 +16,9 @@ Serendipity::Application.routes.draw do
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
 
+  match 'merges/:id/like' => 'merges#like', :as => "like"
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
