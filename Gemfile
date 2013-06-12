@@ -7,7 +7,7 @@ gem 'rails', '3.2.11'
 
 group :development do
   gem 'sqlite3'
-  #gem 'capybara'
+  gem 'capybara'
   gem 'rspec-rails'
 end
 
@@ -51,3 +51,6 @@ gem 'omniauth-facebook'
 gem 'rmagick'
 
 gem 'mysql2'
+
+gem 'kaminari'
+gem 'acts_as_votable', '~> 0.5.0'

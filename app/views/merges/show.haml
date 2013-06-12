@@ -1,10 +1,28 @@
-= image_tag("/"+@merge.url)
-<br>
-= image_tag @first_image.url, :width=>100
-by
-= @first_image.user.username
-<br>
-= image_tag @second_image.url, :width=>100
-by
-= @first_image.user.username
-<br>
+#merge
+
+  .photo= image_tag("/"+@merge.url)
+
+  = @merge.likes.size
+  likes
+
+  - if user_signed_in?
+    - if current_user.voted_as_when_voted_for @merge
+      You liked this.
+    - else
+      = link_to "like", like_path(@merge)
+
+  .originals
+    .first
+      .photo
+        = link_to image_tag(@first_image.url.thumb, :width=>100), @first_image
+        .user
+          = link_to @first_image.user.username, @first_image.user
+      .description
+        = @first_image.description
+    .second
+      .photo
+        = link_to image_tag(@second_image.url.thumb, :width=>100), @second_image
+        .user
+          = link_to @second_image.user.username, @second_image.user
+      .description
+        = @second_image.description
