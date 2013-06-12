@@ -28,14 +28,7 @@ class Photo < ActiveRecord::Base
     overlay = Magick::Image.read("public/uploads/photo/#{overlay_photo.id}/#{overlay_photo.url.file.filename}").first
     overlay = overlay.resize_to_fill(500, 500)
 
-    #func = getMergeFunction
-    puts func
-    
-
-
-    source.composite!(overlay, 0, 0, Magick::OverlayCompositeOp)
-    #source.composite!(overlay, 0, 0, Magick::ScreenCompositeOp)
-
+    source.composite!(overlay, 0, 0, getMergeFunction)
 
     m = Merge.create!(
         :first_image => self.id,
