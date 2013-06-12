@@ -2,17 +2,25 @@ require 'spec_helper'
 
 describe "photos/index" do
   before(:each) do
+    assign(:users, [
+        stub_model(User,
+                   :id => 1,
+                   :username => "fritz"
+        )
+    ])
     assign(:photos, [
-      stub_model(Photo,
-        :url => "Url",
-        :description => "MyText",
-        :user_id => 1
-      ),
-      stub_model(Photo,
-        :url => "Url",
-        :description => "MyText",
-        :user_id => 1
-      )
+        stub_model(Photo,
+                   :url => "Url",
+                   :description => "MyText",
+                   :user_id => 1,
+                   :created_at => Time.now
+        ),
+        stub_model(Photo,
+                   :url => "Url",
+                   :description => "MyText",
+                   :user_id => 1,
+                   :created_at => Time.now
+        )
     ])
   end
 
