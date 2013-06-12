@@ -19,6 +19,11 @@ class Photo < ActiveRecord::Base
     overlay = Magick::Image.read("public/uploads/photo/#{overlay_photo.id}/#{overlay_photo.url.file.filename}").first
     overlay = overlay.resize_to_fill(500, 500)
 
+    #func = getMergeFunction
+    puts func
+    
+
+
     source.composite!(overlay, 0, 0, Magick::OverlayCompositeOp)
     #source.composite!(overlay, 0, 0, Magick::ScreenCompositeOp)
 
@@ -41,4 +46,11 @@ class Photo < ActiveRecord::Base
     puts m.inspect
     puts "---------"
   end
+
+  def getMergeFunction
+    mergeFunctions = Array.new
+    mergeFunctions.push(Magick::OverlayCompositeOp, Magick::ScreenCompositeOp, Magick::MultiplyCompositeOp, Magick::DarkenCompositeOp, Magick::LightenCompositeOp, Magick::HardLightCompositeOp)
+    mergeFunctions.sample
+  end
+
 end
