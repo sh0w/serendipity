@@ -45,3 +45,5 @@ db/migrate/20130508134244_remove_user_id_from_merges.rb
 lib/libMagick++.dylib
 lib/libMagickCore.dylib
 lib/libMagickWand.dylib
+
+Gemfile
