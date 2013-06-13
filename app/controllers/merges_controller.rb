@@ -25,6 +25,6 @@ class MergesController < ApplicationController
 
   def index
     params[:order] ||= "cached_votes_score"
-    @merges = Merge.order("#{params[:order]} DESC").page(params[:page]).per(9)
+    @merges = Merge.order("#{params[:order]} DESC").page(params[:page]).per(20)
   end
 end
