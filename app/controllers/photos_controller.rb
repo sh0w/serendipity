@@ -77,9 +77,6 @@ class PhotosController < ApplicationController
   # DELETE /photos/1.json
   def destroy
     @photo = Photo.find(params[:id])
-    authorize! :destroy, @photo, :message => "You are not allowed to delete this photo."
-
-
     @photo.destroy
 
     respond_to do |format|

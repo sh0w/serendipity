@@ -14,14 +14,17 @@
     %li
       <a href="#tab3" data-toggle="tab">Likes</a></li>
   %div.tab-content
-    %div.tab-pane.photoOverview.active#tab1
+    %div.tab-pane.photoOverview.clearfix.active#tab1
+      = "You haven't merged any photos yet!" if @merges.empty?
       = paginate @merges
       -@merges.each do | merge |
         = link_to image_tag("/#{merge.url}", :width => 300), merge
-    %div.tab-pane.photoOverview#tab2
+    %div.tab-pane.photoOverview.clearfix#tab2
+      = "You haven't uploaded any photos yet!" if @photos.empty?
       = paginate @photos
       -@photos.each do | p |
         = link_to image_tag(p.url.medium, :width => 300), p
-    %div.tab-pane.photoOverview#tab3
+    %div.tab-pane.photoOverview.clearfix#tab3
+      = "You haven't liked any photos yet!" if @likes.empty?
       -@likes.each do | l |
         = link_to image_tag("/#{l.url}", :width => 300), l

@@ -2,16 +2,9 @@
 
 = paginate @photos
 
-- @photos.each do |photo|
-  .photo
-    %p= link_to image_tag(photo.url.medium), photo_path(photo)
-    %p
-      - time_ago_in_words(photo.created_at)
-      ago by
-      - if photo.user.blank? or photo.user.username.blank?
-        user
-      - else
-        = link_to photo.user.username, user_path(photo.user)
-    %p.description= photo.description
+.photoOverview.clearfix
+  - @photos.each do |photo|
+    .photo
+      %p= link_to image_tag(photo.url.medium), photo_path(photo)
 
 = link_to t('.new', :default => t("helpers.links.new")), new_photo_path, :class => 'btn btn-primary'
