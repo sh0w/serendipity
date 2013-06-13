@@ -16,6 +16,18 @@ class User < ActiveRecord::Base
 
   validates_presence_of :email
 
+
+  include PublicActivity::Model
+  tracked
+
+  after_create :signup_action
+
+  def signup_action
+
+    self.create_activity key: 'user.signed_up', owner: self
+
+  end
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -42,10 +54,6 @@ class User < ActiveRecord::Base
 
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
-
-    require 'pp'
-    #puts auth
-    pp auth
 
     unless user
       user = User.create(#name:auth.extra.raw_info.name,

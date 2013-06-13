@@ -15,6 +15,10 @@ class Photo < ActiveRecord::Base
 
   after_commit :new_merged_photo
 
+  include PublicActivity::Model
+  tracked
+
+
   def new_merged_photo
     require "carrierwave/processing/rmagick"
 

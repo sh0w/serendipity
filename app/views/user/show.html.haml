@@ -16,10 +16,13 @@
     %li
       <a href="#tab3" data-toggle="tab">Likes</a></li>
   %div.tab-content
-    %div.tab-pane.photoOverview.clearfix.active#tab0
+    %div.tab-pane.clearfix.active#tab0
       = "No public activity" if @activities.empty?
-      - @activities.each do |activity|
-        = render_activity(activity)
+      %table.table.table-striped
+        - @activities.each do |activity|
+          %tr
+            %td
+              %p= render_activity(activity)
     %div.tab-pane.photoOverview.clearfix#tab1
       = "You haven't merged any photos yet!" if @merges.empty?
       -@merges.each do | merge |

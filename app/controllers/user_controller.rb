@@ -6,6 +6,6 @@ class UserController < ApplicationController
     @photos = @photos.order("created_at DESC").page(params[:page]).per(20)
     @likes = @user.find_voted_items.first(20)
 
-   # @activities = PublicActivity::Activity.all
+    @activities = PublicActivity::Activity.where(:owner_id => @user.id).order("created_at desc")
   end
 end

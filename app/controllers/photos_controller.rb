@@ -51,7 +51,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        #@photo.create_activity key: 'merge.created', owner: current_user
+        @photo.create_activity key: 'merge.created', owner: current_user
 
         puts "--- save photo --- "
         puts @photo.inspect

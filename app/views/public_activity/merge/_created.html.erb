@@ -1,0 +1,8 @@
+<%= activity.owner.username %>
+merged a photo
+
+<% if activity.trackable %>
+    <%= link_to image_tag(activity.trackable.url, :width => 20), activity.trackable %>
+<% else %>
+    which has since been removed
+<% end %>
