@@ -15,4 +15,21 @@ describe "the merging process", :type => :feature do
   end
 
 
+  # it "can merge photos" do
+  #   make_user_and_login
+
+  #   photo = FactoryGirl.create(:photo)
+  #   photo.inspect
+
+  #   visit new_photo_path
+  #   within("#new_photo") do
+  #     fill_in 'Description', :with => 'A nice test description.'
+  #     attach_file 'Url', Rails.root.join('test', 'img', 'photo1.jpg')
+  #   end
+  #   click_button 'Create Photo'
+  #   page.should have_content "Photo was successfully created."
+    
+
+  # end
+
 end

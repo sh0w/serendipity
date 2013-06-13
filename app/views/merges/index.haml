@@ -1,4 +1,6 @@
 = paginate @merges
 
-- @merges.each do |merge|
-  = render merge
+
+.photoOverview
+  - @merges.each do |merge|
+    = render merge

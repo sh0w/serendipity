@@ -54,3 +54,4 @@ gem 'mysql2'
 
 gem 'kaminari'
 gem 'acts_as_votable', '~> 0.5.0'
+gem "factory_girl_rails", "~> 4.0"

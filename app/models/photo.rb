@@ -31,7 +31,6 @@ class Photo < ActiveRecord::Base
     mergeFunctions = ["overlay", "screen", "darken", "lighten", "hardlight"]
     blendingMethodKey = mergeFunctions.sample
 
-    puts "blendingTest"
     puts blendingMethodKey
     
     case blendingMethodKey
