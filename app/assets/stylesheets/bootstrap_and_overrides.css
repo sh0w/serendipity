@@ -11,6 +11,7 @@
 }
 
 .photoOverview img {
+	float: left;
 	width: 300px;
 	margin: 0 15px 15px 0;
 	padding: 10px;
@@ -19,7 +20,8 @@
 }
 
 body > .container-fluid {
-	padding-left: 40px;
+	padding-left: 10px;
+    padding-right: 0px;
 }
 
 body > .container-fluid > footer {
