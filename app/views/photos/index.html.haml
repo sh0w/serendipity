@@ -1,10 +1,10 @@
 - model_class = Photo
-
-= paginate @photos
-
 .photoOverview.clearfix
   - @photos.each do |photo|
     .photo
       %p= link_to image_tag(photo.url.medium), photo_path(photo)
 
 = link_to t('.new', :default => t("helpers.links.new")), new_photo_path, :class => 'btn btn-primary'
+
+
+= paginate @photos

@@ -16,14 +16,14 @@
   %div.tab-content
     %div.tab-pane.photoOverview.clearfix.active#tab1
       = "You haven't merged any photos yet!" if @merges.empty?
-      = paginate @merges
       -@merges.each do | merge |
         = link_to image_tag("/#{merge.url}", :width => 300), merge
+      = paginate @merges
     %div.tab-pane.photoOverview.clearfix#tab2
       = "You haven't uploaded any photos yet!" if @photos.empty?
-      = paginate @photos
       -@photos.each do | p |
         = link_to image_tag(p.url.medium, :width => 300), p
+      = paginate @photos
     %div.tab-pane.photoOverview.clearfix#tab3
       = "You haven't liked any photos yet!" if @likes.empty?
       -@likes.each do | l |
