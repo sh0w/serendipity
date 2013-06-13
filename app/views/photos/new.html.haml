@@ -1,4 +1,7 @@
 - model_class = Photo
 .page-header
-  %h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human
+  %h1
+    Upload a Photo
+    %small
+      Let the magic happen.
 = render :partial => "form"
