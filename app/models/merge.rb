@@ -10,4 +10,9 @@ class Merge < ActiveRecord::Base
   def default_values
     self.url ||= ''
   end
+
+  before_destroy :delete_likes
+  def delete_likes
+    self.likes.delete_all
+  end
 end
