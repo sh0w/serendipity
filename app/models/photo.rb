@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
   attr_accessible :description, :url, :user_id
   belongs_to :user
 
-  has_many :merges, :foreign_key => 'first_image'
+  has_many :merges, :foreign_key => 'first_image', :dependent => :destroy
 
   mount_uploader :url, PhotoUploader
   validates_presence_of :url, :message => "Please select a photo that you would like to merge."
