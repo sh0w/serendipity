@@ -1,0 +1,7 @@
+merged a photo
+
+<% if activity.trackable %>
+    <%= link_to image_tag(activity.trackable.url), activity.trackable %>
+<% else %>
+    which has since been removed
+<% end %>

@@ -14,6 +14,7 @@ class MergesController < ApplicationController
 
   def like
     @merge.liked_by current_user
+    @merge.create_activity key: 'merge.liked', owner: current_user
     redirect_to @merge
     flash[:notice]="Liked!"
   end

@@ -45,8 +45,18 @@ class PhotosController < ApplicationController
     @photo = Photo.new(params[:photo])
     @photo.user_id = current_user.id
 
+    puts "--- save photo --- "
+    puts @photo.inspect
+    puts "--- save photo --- "
+
     respond_to do |format|
       if @photo.save
+        #@photo.create_activity key: 'merge.created', owner: current_user
+
+        puts "--- save photo --- "
+        puts @photo.inspect
+        puts "--- save photo --- "
+
         @merge = Merge.where(:first_image => @photo.id).first
         format.html { redirect_to merge_path(@merge), notice: 'Photo was successfully created.' }
         format.json { render json: @merge, status: :created, location: @merge }

@@ -8,13 +8,19 @@
 %div.tabbable
   %ul.nav.nav-tabs
     %li.active
+      <a href="#tab0" data-toggle="tab">Activity</a></li>
+    %li
       <a href="#tab1" data-toggle="tab">Photos</a></li>
     %li
       <a href="#tab2" data-toggle="tab">Originals</a></li>
     %li
       <a href="#tab3" data-toggle="tab">Likes</a></li>
   %div.tab-content
-    %div.tab-pane.photoOverview.clearfix.active#tab1
+    %div.tab-pane.photoOverview.clearfix.active#tab0
+      = "No public activity" if @activities.empty?
+      - @activities.each do |activity|
+        = render_activity(activity)
+    %div.tab-pane.photoOverview.clearfix#tab1
       = "You haven't merged any photos yet!" if @merges.empty?
       -@merges.each do | merge |
         = link_to image_tag("/#{merge.url}", :width => 300), merge
