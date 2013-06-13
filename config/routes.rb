@@ -17,6 +17,7 @@ Serendipity::Application.routes.draw do
   match "/signout" => "sessions#destroy", :as => :signout
 
   match 'merges/:id/like' => 'merges#like', :as => "like"
+  match 'merges/:id/unlike' => 'merges#unlike', :as => "unlike"
 
 
 

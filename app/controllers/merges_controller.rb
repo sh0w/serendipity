@@ -17,9 +17,14 @@ class MergesController < ApplicationController
     redirect_to @merge
     flash[:notice]="Liked!"
   end
+  def unlike
+    @merge.unliked_by current_user
+    redirect_to @merge
+    flash[:notice]="Unliked!"
+  end
 
   def index
-    params[:order] ||= "created_at"
-    @merges = Merge.order("#{params[:order]} DESC").page(params[:page]).per(9)
+    params[:order] ||= "cached_votes_score"
+    @merges = Merge.order("#{params[:order]} DESC").page(params[:page]).per(20)
   end
 end

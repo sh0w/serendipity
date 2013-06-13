@@ -1,10 +1,27 @@
-%h1= @user.username
-%p
-  signed up
-  = time_ago_in_words @user.created_at
-  ago
-
-%h2 Photos
-
--@merges.each do | merge |
-  %p= render merge
+%h1
+  = @user.username
+  %small
+    signed up
+    = time_ago_in_words @user.created_at
+    ago
+                   
+%div.tabbable
+  %ul.nav.nav-tabs
+    %li.active
+      <a href="#tab1" data-toggle="tab">Photos</a></li>
+    %li
+      <a href="#tab2" data-toggle="tab">Originals</a></li>
+    %li
+      <a href="#tab3" data-toggle="tab">Likes</a></li>
+  %div.tab-content
+    %div.tab-pane.photoOverview.active#tab1
+      = paginate @merges
+      -@merges.each do | merge |
+        = link_to image_tag("/#{merge.url}", :width => 300), merge
+    %div.tab-pane.photoOverview#tab2
+      = paginate @photos
+      -@photos.each do | p |
+        = link_to image_tag(p.url.medium, :width => 300), p
+    %div.tab-pane.photoOverview#tab3
+      -@likes.each do | l |
+        = link_to image_tag("/#{l.url}", :width => 300), l
