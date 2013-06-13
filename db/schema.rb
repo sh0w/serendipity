@@ -11,16 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425100029) do
+ActiveRecord::Schema.define(:version => 20130613055955) do
 
   create_table "merges", :force => true do |t|
     t.integer  "first_image"
     t.integer  "second_image"
     t.string   "blend_mode"
     t.string   "url"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "cached_votes_total", :default => 0
+    t.integer  "cached_votes_score", :default => 0
+    t.integer  "cached_votes_up",    :default => 0
+    t.integer  "cached_votes_down",  :default => 0
   end
+
+  add_index "merges", ["cached_votes_down"], :name => "index_merges_on_cached_votes_down"
+  add_index "merges", ["cached_votes_score"], :name => "index_merges_on_cached_votes_score"
+  add_index "merges", ["cached_votes_total"], :name => "index_merges_on_cached_votes_total"
+  add_index "merges", ["cached_votes_up"], :name => "index_merges_on_cached_votes_up"
 
   create_table "photos", :force => true do |t|
     t.string   "url"
